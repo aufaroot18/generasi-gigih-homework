@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import { data } from './data/album-source';
 
-function App() {
+const App = () => {
+  const {
+    name: title,
+    artists: [
+      {
+        name: artist,
+      }
+    ],
+    images: [, mediumImage],
+  } = data.album;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="playlists">
+        <div className="playlist">
+          <div className="playlist-image-container">
+            <img src={mediumImage.url} alt="" />
+          </div>
+          <p>Title: {title}</p>
+          <p>Artits: {artist}</p>
+          <button>Select</button>
+        </div>
+      </div>
     </div>
   );
 }
