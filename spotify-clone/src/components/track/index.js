@@ -11,33 +11,22 @@ class Track extends React.Component {
     this.scope = 'playlist-modify-private';
     this.client_id = 'f5ac16cc1ea44fda9cbe7bb5662252bf';
     this.redirect_uri = 'http://localhost:3000/';
-    this.link = `https://accounts.spotify.com/id/authorize?response_type=token&client_id=${this.client_id}&scope=${encodeURIComponent(this.scope)}&redirect_uri=${encodeURIComponent(this.redirect_uri)}&&show_dialog=true`;
+    this.link = `https://accounts.spotify.com/id/authorize?response_type=token&client_id=${this.client_id}&scope=${encodeURIComponent(this.scope)}&redirect_uri=${encodeURIComponent(this.redirect_uri)}&show_dialog=true`;
 
     this.state = {
       token: null,
     }
   }
 
-  getHash = () => {
-    const hash = window.location.hash
-      .substring(1)
-      .split("&")
-      .reduce(function(initial, item) {
-        if (item) {
-          var parts = item.split("=");
-          initial[parts[0]] = decodeURIComponent(parts[1]);
-        }
-        return initial;
-      }, {});
-    
-    window.location.hash = "";
-
-    return hash;
+  getParams = () => {
+    const hash = window.location.hash.substr(1);
+    const params = new URLSearchParams(hash);
+    return params;
   }
 
   componentDidMount() {
-    const hash = this.getHash();
-    const token = hash.access_token;
+    const params = this.getParams();
+    const token = params.get('access_token');
 
     if (token) {
       this.setState({
