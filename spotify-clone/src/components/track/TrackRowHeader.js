@@ -1,13 +1,12 @@
+import styles from './Track.module.css';
+
 const TrackRowHeader = () => {
   return(
-    <thead>
-      <tr>
-        <th>Nama Artis</th>
-        <th>Nama Album</th>
-        <th>Tanggal Rilis</th>
-        <th>Total Tracks</th>
-      </tr>
-    </thead>
+    <tr>
+      <th className={styles.table__header}>Name</th>
+      <th className={styles.table__header}>Description</th>
+      <th className={styles.table__header}>Type</th>
+    </tr>
   );
 };
 
