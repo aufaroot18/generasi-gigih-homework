@@ -1,21 +1,15 @@
-import './App.css';
-/* Components */
-import Gif from './components/gif';
-import Playlist from './components/playlist';
+/* React */
+import React from 'react';
+
+/* Component */
 import Track from './components/track';
 
-/* Data */
-import gif from './data/gif-source';
-import { data as playlist } from './data/album-source';
-import { data as tracks } from './data/albums-source';
+/* CSS */
+import './App.css';
 
-const App = () => {
-  return (
-    <div className="App">
-      <Gif gif={gif} />
-      <Playlist playlist={playlist} />
-      <Track tracks={tracks} />
-    </div>
+function App() {
+  return(
+    <Track />
   );
 }
 
