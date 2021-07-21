@@ -3,30 +3,10 @@ import React from 'react';
 import axios from 'axios';
 
 /* Components */
-import TrackRowHeader from "./TrackRowHeader";
-import TrackRow from "./TrackRow";
+import TrackTable from './TrackTable';
 
 /* Styles */
 import styles from './Track.module.css';
-
-const TrackTable = (props) => {
-  const { playlists: tracks } = props;
-  const trackRow = tracks.map(track => <TrackRow track={track} key={track.id} />)
-  
-  return(
-    <div className={styles.container}>
-      <h2>Track Component</h2>
-      <table className={styles.table}>
-        <thead className={styles.table__head}>
-          <TrackRowHeader />
-        </thead>
-        <tbody>
-          {trackRow}
-        </tbody>
-      </table>
-    </div>
-  );
-};
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -58,7 +38,6 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    console.log(this.token);
     const { playlists } = this.state;
     return(
       <div>
