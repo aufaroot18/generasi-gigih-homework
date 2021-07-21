@@ -5,7 +5,7 @@ import TrackRow from "./TrackRow";
 /* Styles */
 import styles from './Track.module.css';
 
-const TrackTable = (props) => {
+function TrackTable(props) {
   const { playlists: tracks } = props;
   const trackRow = tracks.map(track => <TrackRow track={track} key={track.id} />)
   
