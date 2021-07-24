@@ -8,7 +8,7 @@ import TrackTable from './TrackTable';
 /* Styles */
 import styles from './Track.module.css';
 
-function SearchBar({ token }) {
+function SearchBar({ token, uris, setUris, setIsSearched }) {
   /* state */
   const [search, setSearch] = useState('');
   const [playlists, setPlaylists] = useState([]);
@@ -24,13 +24,14 @@ function SearchBar({ token }) {
       headers: { Authorization: `Bearer ${token}` },
       params: {
         q: search,
-        type: 'playlist',
+        type: 'track',
       }
     };
     
     const result = await axios(config);
-    const playlists = result.data.playlists.items;
+    const playlists = result.data.tracks.items;
     setPlaylists(prevState => [...prevState, ...playlists]);
+    setIsSearched(true);
 
     _clearInput();
   }
@@ -41,10 +42,11 @@ function SearchBar({ token }) {
 
   return(
     <div>
+      <h2>Search Track</h2>
       <input type="text" name="search" onChange={handleChange} className={styles.search} value={search} />
       <button onClick={handleClick} className={styles.button}>Search</button>
       {
-        !!playlists.length && <TrackTable playlists={playlists} />
+        !!playlists.length && <TrackTable playlists={playlists} uris={uris} setUris={setUris} />
       }
     </div>
   );

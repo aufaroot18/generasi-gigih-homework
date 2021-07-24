@@ -5,13 +5,13 @@ import TrackRow from "./TrackRow";
 /* Styles */
 import styles from './Track.module.css';
 
-function TrackTable(props) {
-  const { playlists: tracks } = props;
-  const trackRow = tracks.map(track => <TrackRow track={track} key={track.id} />)
+function TrackTable({ playlists: tracks, uris, setUris }) {
+
+  const trackRow = tracks.map(track => <TrackRow track={track} key={track.id} uris={uris} setUris={setUris} />)
   
   return(
     <div className={styles.container}>
-      <h2>Track Component</h2>
+      <h2>Tracks</h2>
       <table className={styles.table}>
         <thead className={styles.table__head}>
           <TrackRowHeader />
