@@ -1,50 +1,53 @@
+/* Package */
 import React, { useState } from 'react';
-import styles from './Gif.module.css';
+
+/* Components */
+import SearchBar from './SearchBar';
+import CardList from './CardList';
 
 /* CSS */
-// import styles from './Gif.module.css';
-
-// convert class to function
-// setup usestate dan useeffect
-// siapin state search dan data
-// handle search dan click
-
-function Card({ gif }) {
-  return(
-    <div className={styles.image}>
-      <img src={gif.images.original.url} alt="gif" width="100" />
-    </div>
-  );
-}
+import styles from './Gif.module.css';
 
 function Gif() {
-
   const [search, setSearch] = useState('');
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
   }
 
   const handleClick = async () => {
-    const link = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_API_KEY}&q=${search}&limit=10`;
+    setLoading(true);
+    _fetchGifs();
+    _addTimeOut(2000);
+  }
+
+  const _fetchGifs = async () => {
+    const link = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_API_KEY}&q=${search}&limit=9`;
     const result = await fetch(link);
     const gifs = await result.json();
-
     setData(gifs.data);
+  }
+
+  const _addTimeOut = (time) => {
+    setTimeout(() => {
+      setLoading(false);
+    }, time);
+  }
+
+  const _renderCardList = () => {
+    return loading
+    ? <div className={styles.loading}>Loading ...</div>
+    : <CardList data={data} />
   }
 
   return(
     <div className={styles.gif}>
-      <div>
-        <input type="text" onChange={(e) => handleSearch(e)} className={styles.search} />
-        <button onClick={handleClick} className={styles.button}>Search</button>
-        <div className={styles.images}>
-          {
-            data.map(gif => <Card gif={gif} key={gif.id} />)
-          }
-        </div>
-      </div>
+      <SearchBar handleSearch={handleSearch} handleClick={handleClick} />
+      {
+        _renderCardList()
+      }
     </div>
   );
 }
