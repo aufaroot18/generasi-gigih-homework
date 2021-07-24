@@ -1,5 +1,5 @@
 const CONFIG = {
-  scope: 'playlist-modify-private',
+  scope: 'playlist-read-private playlist-modify-private',
   redirect_url: 'http://localhost:3000/',
   client_id: 'f5ac16cc1ea44fda9cbe7bb5662252bf',
 };
