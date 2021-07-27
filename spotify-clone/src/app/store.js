@@ -11,7 +11,7 @@ steps:
 */
 
 import { configureStore } from '@reduxjs/toolkit';
-import playlistReducer from '../components/playlist/playlist.slice';
+import playlistReducer from '../store/playlist/playlist.slice';
 import counterReducer from '../store/counter/counter.slice';
 import gifReducer from '../store/gif/gif.slice';
 
