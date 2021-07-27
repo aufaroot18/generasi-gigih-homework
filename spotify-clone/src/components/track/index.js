@@ -14,7 +14,7 @@ import endpoint from '../../globals/spotify-config';
 
 
 import { useDispatch } from 'react-redux';
-import { setToken as storeToken } from '../playlist/playlist.slice';
+import { setToken as storeToken } from '../../store/playlist/playlist.slice';
 
 const getParams = () => {
   const hash = window.location.hash.substr(1);
