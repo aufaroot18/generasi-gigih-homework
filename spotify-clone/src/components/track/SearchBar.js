@@ -7,11 +7,14 @@ import TrackTable from './TrackTable';
 
 /* Styles */
 import styles from './Track.module.css';
+import { useSelector } from 'react-redux';
 
-function SearchBar({ token, uris, setUris, setIsSearched }) {
+function SearchBar({ uris, setUris, setIsSearched }) {
   /* state */
   const [search, setSearch] = useState('');
   const [playlists, setPlaylists] = useState([]);
+
+  const { token } = useSelector(state => state.playlist);
 
   const handleChange = (e) => {
     setSearch(e.target.value);
