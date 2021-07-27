@@ -2,11 +2,10 @@
 import React from 'react';
 
 /* Component */
-// import Track from './components/track';
+import Playlist from './components/playlist';
 
 /* CSS */
 import './App.css';
-import Playlist from './components/playlist';
 
 function App() {
   return(
