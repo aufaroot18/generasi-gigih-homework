@@ -1,10 +1,10 @@
 /* Styles */
 import styles from './Gif.module.css';
 
-function SearchBar({ handleClick, handleSearch }) {
+function SearchBar({ handleClick, handleInput }) {
   return(
     <div>
-      <input type="text" onChange={handleSearch} className={styles.search} />
+      <input type="text" onChange={handleInput} className={styles.search} />
       <button onClick={handleClick} className={styles.button}>Search</button>
     </div>
   );
