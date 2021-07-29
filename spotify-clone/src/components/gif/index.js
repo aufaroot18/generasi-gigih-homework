@@ -13,7 +13,7 @@ import CardList from './CardList';
 import styles from './Gif.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 
-function Gif() {
+function Gif({ trending }) {
   // state
   const [input, setInput] = useState('');
   const [data, setData] = useState([]);
@@ -23,8 +23,17 @@ function Gif() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    _fetchGifs();
-  }, [query])
+    if (trending) {
+      console.log('trending');
+      setData([]);
+      _fetchGifs();
+    }
+    else {
+      console.log('search');
+      setData([]);
+      _fetchGifs();
+    }
+  }, [query, trending]);
 
   const handleInput = (e) => {
     setInput(e.target.value);
@@ -32,23 +41,33 @@ function Gif() {
 
   const handleClick = async () => {
     dispatch(setQuery(input));
-    setLoading(true);
     _fetchGifs();
-    _addTimeOut(2000);
+  }
+
+  const getUrl = () => {
+    if (trending) {
+      return `https://api.giphy.com/v1/gifs/trending?api_key=${process.env.REACT_APP_API_KEY}&limit=9`;
+    }
+
+    return `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_API_KEY}&q=${query}&limit=9`;
   }
 
   const _fetchGifs = async () => {
-    const link = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_API_KEY}&q=${query}&limit=9`;
+    setLoading(true);
+
+    const link = getUrl();
     const result = await fetch(link);
     const gifs = await result.json();
     setData(gifs.data);
+
+    setLoading(false);
   }
 
-  const _addTimeOut = (time) => {
+  /* const _addTimeOut = (time) => {
     setTimeout(() => {
       setLoading(false);
     }, time);
-  }
+  } */
 
   const _renderCardList = () => {
     return loading
@@ -58,7 +77,9 @@ function Gif() {
 
   return(
     <div className={styles.gif}>
-      <SearchBar handleInput={handleInput} handleClick={handleClick} />
+      {
+        trending ? null : <SearchBar handleInput={handleInput} handleClick={handleClick} />
+      }
       {
         _renderCardList()
       }
