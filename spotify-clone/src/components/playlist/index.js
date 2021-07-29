@@ -8,9 +8,9 @@ import Form from "./Form";
 /* Styles */
 import styles from './Playlist.module.css';
 
-const Playlist = () => {
+function Playlist() {
   const [uris, setUris] = useState([]);
-  const [token, setToken] = useState(null);
+  const [token] = useState(null);
   const [isSearched, setIsSearched] = useState(false);
 
   return(
@@ -18,7 +18,7 @@ const Playlist = () => {
       {
         isSearched && <Form token={token} uris={uris} />
       }
-      <Track uris={uris} setUris={setUris} token={token} setToken={setToken} setIsSearched={setIsSearched} />
+      <Track uris={uris} setUris={setUris} setIsSearched={setIsSearched} />
     </div>
   );
 };
