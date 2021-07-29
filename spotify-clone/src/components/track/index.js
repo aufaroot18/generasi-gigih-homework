@@ -13,7 +13,7 @@ import styles from './Track.module.css';
 import endpoint from '../../globals/spotify-config';
 
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setToken as storeToken } from '../../store/playlist/playlist.slice';
 
 const getParams = () => {
@@ -22,14 +22,15 @@ const getParams = () => {
   return params;
 };
 
-function Track({ token, setToken, uris, setUris, setIsSearched }) {
-
+function Track({ uris, setUris, setIsSearched }) {
+  const { token } = useSelector(state => state.playlist);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const params = getParams();
-    setToken(params.get('access_token'));
-    dispatch(storeToken(params.get('access_token')));
+    if (!!params.get('access_token')) {
+      dispatch(storeToken(params.get('access_token')));
+    }
   }, []);
 
   return(
