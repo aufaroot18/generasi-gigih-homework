@@ -6,7 +6,7 @@ steps:
 3. Membuat reducer
 4. Mengimport reducer di store
 5. Menggunaan useSelector untuk mengambil nilai dari store
-5. Gunakan dispatch untuk melakukan aksi
+6. Gunakan dispatch untuk melakukan aksi
 
 */
 
