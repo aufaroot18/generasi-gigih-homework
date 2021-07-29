@@ -2,16 +2,19 @@
 import React from 'react';
 
 /* Component */
-import Playlist from './components/playlist';
+import Navbar from './components/navbar';
+import Routes from './routes';
 
 /* CSS */
 import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
   return(
-    <div>
-      <Playlist />
-    </div>
+    <Router>
+      <Navbar />
+      <Routes />
+    </Router>
   );
 }
 
