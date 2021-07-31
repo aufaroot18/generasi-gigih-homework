@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { setQuery } from '../../store/gif/gif.slice';
 import SearchBar from './SearchBar';
 import CardList from './CardList';
@@ -67,5 +68,13 @@ function Gif({ trending }) {
     </div>
   );
 }
+
+Gif.defaultProps = {
+  trending: false,
+};
+
+Gif.propTypes = {
+  trending: PropTypes.bool,
+};
 
 export default Gif;
