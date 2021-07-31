@@ -1,17 +1,9 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* Package */
 import React, { useEffect, useState } from 'react';
-
-/* Slice */
+import { useDispatch, useSelector } from 'react-redux';
 import { setQuery } from '../../store/gif/gif.slice';
-
-/* Components */
 import SearchBar from './SearchBar';
 import CardList from './CardList';
-
-/* CSS */
 import styles from './Gif.module.css';
-import { useDispatch, useSelector } from 'react-redux';
 
 function Gif({ trending }) {
   // state
@@ -19,30 +11,8 @@ function Gif({ trending }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const { query } = useSelector(state => state.gif);
+  const { query } = useSelector((state) => state.gif);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (trending) {
-      console.log('trending');
-      setData([]);
-      _fetchGifs();
-    }
-    else {
-      console.log('search');
-      setData([]);
-      _fetchGifs();
-    }
-  }, [query, trending]);
-
-  const handleInput = (e) => {
-    setInput(e.target.value);
-  }
-
-  const handleClick = async () => {
-    dispatch(setQuery(input));
-    _fetchGifs();
-  }
 
   const getUrl = () => {
     if (trending) {
@@ -50,9 +20,9 @@ function Gif({ trending }) {
     }
 
     return `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_API_KEY}&q=${query}&limit=9`;
-  }
+  };
 
-  const _fetchGifs = async () => {
+  const fetchGifs = async () => {
     setLoading(true);
 
     const link = getUrl();
@@ -61,27 +31,38 @@ function Gif({ trending }) {
     setData(gifs.data);
 
     setLoading(false);
-  }
+  };
 
-  /* const _addTimeOut = (time) => {
-    setTimeout(() => {
-      setLoading(false);
-    }, time);
-  } */
+  useEffect(() => {
+    if (trending) {
+      setData([]);
+      fetchGifs();
+    } else {
+      setData([]);
+      fetchGifs();
+    }
+  }, [query, trending]);
 
-  const _renderCardList = () => {
-    return loading
+  const handleInput = (e) => {
+    setInput(e.target.value);
+  };
+
+  const handleClick = async () => {
+    dispatch(setQuery(input));
+    fetchGifs();
+  };
+
+  const renderCardList = () => (loading
     ? <div className={styles.loading}>Loading ...</div>
-    : <CardList data={data} />
-  }
+    : <CardList data={data} />);
 
-  return(
+  return (
     <div className={styles.gif}>
       {
         trending ? null : <SearchBar handleInput={handleInput} handleClick={handleClick} />
       }
       {
-        _renderCardList()
+        renderCardList()
       }
     </div>
   );

@@ -1,26 +1,26 @@
 /* Package */
 import React, { useState } from 'react';
-import axios from 'axios';
-
-/* Components */
-import TrackTable from './TrackTable';
-
-/* Styles */
-import styles from './Track.module.css';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
+import TrackTable from './TrackTable';
+import styles from './Track.module.css';
 
 function SearchBar({ uris, setUris, setIsSearched }) {
   /* state */
   const [search, setSearch] = useState('');
   const [playlists, setPlaylists] = useState([]);
 
-  const { token } = useSelector(state => state.playlist);
+  const { token } = useSelector((state) => state.playlist);
+
+  const clearInput = () => {
+    setSearch('');
+  };
 
   const handleChange = (e) => {
     setSearch(e.target.value);
-  }
+  };
 
-  const handleClick = async (e) => {
+  const handleClick = async () => {
     const config = {
       method: 'get',
       url: 'https://api.spotify.com/v1/search',
@@ -28,26 +28,22 @@ function SearchBar({ uris, setUris, setIsSearched }) {
       params: {
         q: search,
         type: 'track',
-      }
+      },
     };
-    
+
     const result = await axios(config);
-    const playlists = result.data.tracks.items;
-    setPlaylists(prevState => [...prevState, ...playlists]);
+    const playlistItems = result.data.tracks.items;
+    setPlaylists((prevState) => [...prevState, ...playlistItems]);
     setIsSearched(true);
 
-    _clearInput();
-  }
+    clearInput();
+  };
 
-  const _clearInput = () => {
-    setSearch('');
-  }
-
-  return(
+  return (
     <div>
       <h2>Search Track</h2>
       <input type="text" name="search" onChange={handleChange} className={styles.search} value={search} />
-      <button onClick={handleClick} className={styles.button}>Search</button>
+      <button onClick={handleClick} className={styles.button} type="button">Search</button>
       {
         !!playlists.length && <TrackTable playlists={playlists} uris={uris} setUris={setUris} />
       }

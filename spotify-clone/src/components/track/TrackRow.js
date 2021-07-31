@@ -1,38 +1,32 @@
-/* Package */
-import { useState } from 'react';
-
-/* Styles */
+import React, { useState } from 'react';
 import styles from './Track.module.css';
 
-function TrackRow(props) {
-  const { uri, name, type } = props.track;
-  const { uris, setUris } = props;
-  const [ isSelected, setIsSelected ] = useState(false);
+function TrackRow({ track, uris, setUris }) {
+  const { uri, name, type } = track;
+  const [isSelected, setIsSelected] = useState(false);
 
-  const handleSelect = () => {
-    setIsSelected(!isSelected);
-    _manipulateUris();
-  };
-
-  const _manipulateUris = () => {
+  const manipulateUris = () => {
     // jika uri udah ada, hapus
     if (uris.includes(uri)) {
       const index = uris.indexOf(uri);
       uris.splice(index, 1);
+    } else { // // jika uri belum ada, maka tambahkan
+      setUris((prevState) => [...prevState, uri]);
     }
-    // jika uri belum ada, maka tambahkan
-    else {
-      setUris(prevState => [...prevState, uri]);
-    }
-  }
-  
-  return(
+  };
+
+  const handleSelect = () => {
+    setIsSelected(!isSelected);
+    manipulateUris();
+  };
+
+  return (
     <tr className={styles.table__row}>
       <td className={styles.table__data}>{uri}</td>
       <td className={styles.table__data}>{name}</td>
       <td className={styles.table__data}>{type}</td>
       <td className={styles.table__data}>
-        <button className={styles.button} onClick={handleSelect}>
+        <button className={styles.button} onClick={handleSelect} type="button">
           {
             isSelected ? 'Deselect' : 'Select'
           }
@@ -40,6 +34,6 @@ function TrackRow(props) {
       </td>
     </tr>
   );
-};
+}
 
 export default TrackRow;

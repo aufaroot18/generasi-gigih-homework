@@ -1,17 +1,18 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setToken } from '../../store/playlist/playlist.slice';
 import styles from './navbar.module.css';
 
 function Navbar() {
-  const { token } = useSelector(state => state.playlist);
+  const { token } = useSelector((state) => state.playlist);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
     dispatch(setToken(null));
-  }
+  };
 
-  return(
+  return (
     <div>
       <nav>
         <ul className={styles.nav}>
@@ -34,7 +35,7 @@ function Navbar() {
           {
             token && (
               <li className={styles.nav_item}>
-                <button className={styles.logout} onClick={handleLogout}>Logout</button>
+                <button className={styles.logout} onClick={handleLogout} type="button">Logout</button>
               </li>
             )
           }

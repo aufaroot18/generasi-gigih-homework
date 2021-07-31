@@ -1,8 +1,8 @@
-/* Styles */
+import React from 'react';
 import styles from './Track.module.css';
 
 function TrackRowHeader() {
-  return(
+  return (
     <tr>
       <th className={styles.table__header}>URI</th>
       <th className={styles.table__header}>Name</th>
@@ -10,6 +10,6 @@ function TrackRowHeader() {
       <th className={styles.table__header}>Action</th>
     </tr>
   );
-};
+}
 
 export default TrackRowHeader;

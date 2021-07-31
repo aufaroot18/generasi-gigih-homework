@@ -1,11 +1,6 @@
-/* Package */
-import { useState } from "react";
-
-/* Components */
-import Track from "../track";
-import Form from "./Form";
-
-/* Styles */
+import React, { useState } from 'react';
+import Track from '../track';
+import Form from './Form';
 import styles from './Playlist.module.css';
 
 function Playlist() {
@@ -13,7 +8,7 @@ function Playlist() {
   const [token] = useState(null);
   const [isSearched, setIsSearched] = useState(false);
 
-  return(
+  return (
     <div className={styles.container}>
       {
         isSearched && <Form token={token} uris={uris} />
@@ -21,6 +16,6 @@ function Playlist() {
       <Track uris={uris} setUris={setUris} setIsSearched={setIsSearched} />
     </div>
   );
-};
+}
 
 export default Playlist;

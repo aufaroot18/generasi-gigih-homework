@@ -1,15 +1,14 @@
-/* Components */
-import TrackRowHeader from "./TrackRowHeader";
-import TrackRow from "./TrackRow";
-
-/* Styles */
+import React from 'react';
+import TrackRowHeader from './TrackRowHeader';
+import TrackRow from './TrackRow';
 import styles from './Track.module.css';
 
 function TrackTable({ playlists: tracks, uris, setUris }) {
+  const trackRow = tracks.map((track) => (
+    <TrackRow track={track} key={track.id} uris={uris} setUris={setUris} />
+  ));
 
-  const trackRow = tracks.map(track => <TrackRow track={track} key={track.id} uris={uris} setUris={setUris} />)
-  
-  return(
+  return (
     <div className={styles.container}>
       <h2>Tracks</h2>
       <table className={styles.table}>
@@ -22,6 +21,6 @@ function TrackTable({ playlists: tracks, uris, setUris }) {
       </table>
     </div>
   );
-};
+}
 
 export default TrackTable;

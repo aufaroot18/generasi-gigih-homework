@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 // state
 const initialState = {
@@ -12,8 +12,8 @@ const gifSlice = createSlice({
   reducers: {
     setQuery: (state, action) => {
       state.query = action.payload;
-    }
-  }
+    },
+  },
 });
 
 // actions
@@ -22,6 +22,6 @@ const { setQuery } = gifSlice.actions;
 // reducers
 const gifReducer = gifSlice.reducer;
 
-export{ gifSlice };
-export{ setQuery };
+export { gifSlice };
+export { setQuery };
 export default gifReducer;
