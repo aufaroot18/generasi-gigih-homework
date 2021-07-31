@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Gif.module.css';
 
 function CardItem({ gif }) {
@@ -8,5 +9,13 @@ function CardItem({ gif }) {
     </div>
   );
 }
+
+CardItem.defaultProps = {
+  gif: PropTypes.string,
+};
+
+CardItem.propTypes = {
+  gif: PropTypes.string,
+};
 
 export default CardItem;

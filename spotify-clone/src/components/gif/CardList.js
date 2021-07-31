@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CardItem from './CardItem';
 import styles from './Gif.module.css';
 
@@ -11,5 +12,13 @@ function CardList({ data }) {
     </div>
   );
 }
+
+CardList.defaultProps = {
+  data: PropTypes.instanceOf(Array),
+};
+
+CardList.propTypes = {
+  data: PropTypes.instanceOf(Array),
+};
 
 export default CardList;
