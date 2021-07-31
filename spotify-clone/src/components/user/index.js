@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import PropTypes from 'prop-types';
 
 const initialState = {
   loading: false,
@@ -39,6 +40,14 @@ function ListItem({ user }) {
   );
 }
 
+ListItem.defaultProps = {
+  user: PropTypes.string,
+};
+
+ListItem.propTypes = {
+  user: PropTypes.string,
+};
+
 function List({ users }) {
   return (
     <ul>
@@ -46,6 +55,14 @@ function List({ users }) {
     </ul>
   );
 }
+
+List.defaultProps = {
+  users: PropTypes.instanceOf(Array),
+};
+
+List.propTypes = {
+  users: PropTypes.instanceOf(Array),
+};
 
 function Users() {
   const [state, dispatch] = useReducer(reducer, initialState);
