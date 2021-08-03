@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 import styles from './Playlist.module.css';
 
-function Form({ token, uris }) {
-  const myToken = token;
+function Form({ uris }) {
+  const { token: myToken } = useSelector((state) => state.playlist);
 
   const [fields, setFields] = useState({
     title: '',
