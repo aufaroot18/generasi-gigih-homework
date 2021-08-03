@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-import TrackTable from './TrackTable';
 import styles from './Track.module.css';
+import CardList from './CardList';
 
 function SearchBar({ uris, setUris, setIsSearched }) {
   /* state */
@@ -11,6 +11,8 @@ function SearchBar({ uris, setUris, setIsSearched }) {
   const [playlists, setPlaylists] = useState([]);
 
   const { token } = useSelector((state) => state.playlist);
+
+  console.log(token);
 
   const clearInput = () => {
     setSearch('');
@@ -42,11 +44,19 @@ function SearchBar({ uris, setUris, setIsSearched }) {
   return (
     <div>
       <h2>Search Track</h2>
-      <input type="text" name="search" onChange={handleChange} className={styles.search} value={search} />
-      <button onClick={handleClick} className={styles.button} type="button">Search</button>
-      {
-        !!playlists.length && <TrackTable playlists={playlists} uris={uris} setUris={setUris} />
-      }
+      <input
+        type="text"
+        name="search"
+        onChange={handleChange}
+        className={styles.search}
+        value={search}
+      />
+      <button onClick={handleClick} className={styles.button} type="button">
+        Search
+      </button>
+      {!!playlists.length && (
+        <CardList playlists={playlists} uris={uris} setUris={setUris} />
+      )}
     </div>
   );
 }
