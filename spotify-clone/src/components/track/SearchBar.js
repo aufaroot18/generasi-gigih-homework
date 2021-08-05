@@ -12,8 +12,6 @@ function SearchBar({ uris, setUris, setIsSearched }) {
 
   const { token } = useSelector((state) => state.playlist);
 
-  console.log(token);
-
   const clearInput = () => {
     setSearch('');
   };
