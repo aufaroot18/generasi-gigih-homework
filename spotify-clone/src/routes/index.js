@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Gif from '../components/gif';
 import Playlist from '../components/playlist';
+import Create from '../pages/notes/create';
 
 function Routes() {
   const { token } = useSelector((state) => state.playlist);
@@ -14,13 +15,16 @@ function Routes() {
           <Playlist />
         </Route>
         <Route path="/create-playlist">
-          { token ? <Playlist /> : <Redirect to="/" /> }
+          {token ? <Playlist /> : <Redirect to="/" />}
         </Route>
         <Route path="/gif" exact>
           <Gif />
         </Route>
         <Route path="/gif/trending">
           <Gif trending />
+        </Route>
+        <Route path="/notes/create">
+          <Create />
         </Route>
       </Switch>
     </div>
