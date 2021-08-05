@@ -1,15 +1,18 @@
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 import PropTypes from 'prop-types';
 import CardItem from './CardItem';
-import styles from './Gif.module.css';
 
 function CardList({ data }) {
   const cardItems = data.map((gif) => <CardItem gif={gif} key={gif.id} />);
 
   return (
-    <div className={styles.images}>
-      {cardItems}
-    </div>
+    <Container>
+      <Grid container spacing={3}>
+        {cardItems}
+      </Grid>
+    </Container>
   );
 }
 
