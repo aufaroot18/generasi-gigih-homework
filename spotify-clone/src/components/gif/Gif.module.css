@@ -1,5 +1,4 @@
 .gif {
-  background-color: #ecf0f1;
   padding: 1rem 0;
   text-align: center;
 }
@@ -12,7 +11,8 @@
   margin: 1rem 0;
 }
 
-.gif__form input, .search {
+.gif__form input,
+.search {
   display: block;
   margin: 0 auto 1rem;
   border: 1px solid #bdc3c7;
@@ -21,7 +21,8 @@
   outline: none;
 }
 
-.gif__form button, .button {
+.gif__form button,
+.button {
   background-color: #1abc9c;
   color: #ecf0f1;
   padding: 0.5rem 1rem;
