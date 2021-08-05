@@ -73,8 +73,6 @@ function Form({ uris }) {
 
   const clearInput = () => {
     setFields({ title: '', description: '' });
-    console.log('ok');
-    console.log(fields);
   };
 
   useEffect(() => {
@@ -102,13 +100,29 @@ function Form({ uris }) {
       <form onSubmit={handleForm}>
         <div>
           <label htmlFor="title">Title</label>
-          <input id="title" type="text" name="title" onChange={handleFields} className={styles.input} value={fields.title} />
+          <input
+            id="title"
+            type="text"
+            name="title"
+            onChange={handleFields}
+            className={styles.input}
+            value={fields.title}
+          />
         </div>
         <div>
           <label htmlFor="description">Description</label>
-          <input id="description" type="text" name="description" onChange={handleFields} className={styles.input} value={fields.description} />
+          <input
+            id="description"
+            type="text"
+            name="description"
+            onChange={handleFields}
+            className={styles.input}
+            value={fields.description}
+          />
         </div>
-        <button className={styles.button} type="button">Submit</button>
+        <button className={styles.button} type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );
