@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 function CardItem({ gif }) {
   const classes = useStyles();
   return (
-    <Grid item xs={3}>
+    <Grid item xs={12} md={3}>
       <Card>
         <CardMedia
           className={classes.cardImage}
