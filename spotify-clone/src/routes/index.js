@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Gif from '../components/gif';
 import Playlist from '../components/playlist';
+import Notes from '../pages/notes';
 import Create from '../pages/notes/create';
 
 function Routes() {
@@ -22,9 +23,6 @@ function Routes() {
         </Route>
         <Route path="/gif/trending">
           <Gif trending />
-        </Route>
-        <Route path="/notes/create">
-          <Create />
         </Route>
       </Switch>
     </div>
