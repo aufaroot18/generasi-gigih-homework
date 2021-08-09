@@ -35,6 +35,8 @@
           "some": ["nesting", "id"]
         }
       }
-    ]
+    ],
+    "import/extensions": "off",
+    "import/no-unresolved": "off"
   }
 }
