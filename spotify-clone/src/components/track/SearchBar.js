@@ -43,6 +43,7 @@ function SearchBar({ uris, setUris, setIsSearched }) {
     <div>
       <h2>Search Track</h2>
       <input
+        placeholder="Track"
         type="text"
         name="search"
         onChange={handleChange}
