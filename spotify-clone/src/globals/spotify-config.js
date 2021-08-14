@@ -1,6 +1,6 @@
 const CONFIG = {
   scope: 'playlist-read-private playlist-modify-private',
-  redirect_url: 'https://spotify-clone-aufaroot18.vercel.app/',
+  redirect_url: process.env.REACT_APP_REDIRECT_URL,
   client_id: 'f5ac16cc1ea44fda9cbe7bb5662252bf',
 };
 
