@@ -24,11 +24,17 @@ function Track({ uris, setUris, setIsSearched }) {
 
   return (
     <div className={styles.container}>
-      {
-        token === null
-          ? <a href={endpoint} className={styles.button}>Login Spotify</a>
-          : <SearchBar uris={uris} setUris={setUris} setIsSearched={setIsSearched} />
-      }
+      {token === null ? (
+        <a href={endpoint} className={styles.button}>
+          Login Spotify
+        </a>
+      ) : (
+        <SearchBar
+          uris={uris}
+          setUris={setUris}
+          setIsSearched={setIsSearched}
+        />
+      )}
     </div>
   );
 }
