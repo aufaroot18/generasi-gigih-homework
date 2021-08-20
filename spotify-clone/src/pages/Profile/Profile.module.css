@@ -1,0 +1,15 @@
+.profile {
+  margin-top: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.profile__title {
+  color: #28df99;
+  margin-bottom: 1rem;
+}
+
+.profile__description {
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+}
