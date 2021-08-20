@@ -1,9 +1,13 @@
 # Spotify Clone
 
-## Cara Menjalankan
+## Cara Menjalankan Aplikasi
 
-- Menjalankan aplikasi pada mode development: `yarn start`
-- Menjalankan aplikasi pada mode production: `yarn build`
+- Install Dependencies: `yarn install`
+- Start App: `yarn start`
+
+## Cara Build Aplikasi
+
+- Build Application: `yarn build`
 
 ## Features
 
