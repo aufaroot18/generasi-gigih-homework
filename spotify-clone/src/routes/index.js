@@ -1,30 +1,38 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import Gif from '../components/gif';
-import Playlist from '../components/playlist';
+import { Switch, Route } from 'react-router-dom';
+import CreatePlaylist from '../pages/CreatePlaylist';
+import Search from '../pages/Search';
+import FavoriteSong from '../pages/FavoriteSong';
+import Profile from '../pages/Profile';
+import Login from '../pages/Login';
+import Home from '../pages/Home';
 
 function Routes() {
   const { token } = useSelector((state) => state.playlist);
-
-  return (
+  const routes = (
     <div>
       <Switch>
         <Route path="/" exact>
-          <Playlist />
+          <Home />
+        </Route>
+        <Route path="/search">
+          <Search />
         </Route>
         <Route path="/create-playlist">
-          {token ? <Playlist /> : <Redirect to="/" />}
+          <CreatePlaylist />
         </Route>
-        <Route path="/gif" exact>
-          <Gif />
+        <Route path="/favorite">
+          <FavoriteSong />
         </Route>
-        <Route path="/gif/trending">
-          <Gif trending />
+        <Route path="/profile">
+          <Profile />
         </Route>
       </Switch>
     </div>
   );
+
+  return token ? routes : <Login />;
 }
 
 export default Routes;
