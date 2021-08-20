@@ -1,0 +1,15 @@
+.favorite {
+  margin-top: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.favorite__title {
+  color: #28df99;
+  margin-bottom: 1rem;
+}
+
+.favorite__description {
+  color: #7f8c8d;
+  margin-bottom: 1rem;  
+}
