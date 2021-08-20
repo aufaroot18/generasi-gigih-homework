@@ -1,0 +1,37 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+  margin: 0 auto;
+  border-radius: 0 0 10px 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  max-width: 300px;
+}
+
+.card__image {
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.card__album {
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+}
+
+.card__name {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.card__button {
+  text-decoration: none;
+  background-color: #28df99;
+  color: #fff;
+  border: 1px solid #28df99;
+  margin-bottom: 1rem;
+  padding: 0.5rem 2rem;
+  border-radius: 100px;
+  font-weight: 600;
+}
