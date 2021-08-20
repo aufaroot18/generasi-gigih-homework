@@ -24,11 +24,15 @@ function CardItem({ playlist, uris, setUris }) {
 
   return (
     <div className={styles.card}>
-      <div className={styles.card__image}>
-        <img src={album.images[0].url} alt={album.name} />
+      <div className={styles.card__header}>
+        <img
+          className={styles.card__images}
+          src={album.images[0].url}
+          alt={album.name}
+        />
       </div>
       <div className={styles.card__body}>
-        <h2 className={styles.card__artist}>{artists[0].name}</h2>
+        <h2 className={styles.card__name}>{artists[0].name}</h2>
         <p className={styles.card__album}>Album - {album.name}</p>
         <button
           className={styles.card__button}

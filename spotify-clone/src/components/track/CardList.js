@@ -13,9 +13,8 @@ function CardList({ playlists, uris, setUris }) {
   ));
 
   return (
-    <div className={styles.container}>
-      <h2>Songs</h2>
-      <div className={styles.cards}>{cardItems}</div>
+    <div className={styles.cards}>
+      {cardItems}
     </div>
   );
 }
