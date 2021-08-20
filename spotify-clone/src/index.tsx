@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -5,6 +6,11 @@ import './index.css';
 import App from './App';
 
 import store from './app/store';
+
+if (process.env.NODE_ENV === 'development') {
+  const { worker } = require('./mocks/browsers');
+  worker.start();
+}
 
 ReactDOM.render(
   <React.StrictMode>
