@@ -52,7 +52,7 @@ const SpotifyAPI = {
   addItemToPlaylist(uris, playlistId, token) {
     const config = {
       method: 'post',
-      url: SPOTIFY_ENDPOINT.add_item_to_playlist,
+      url: SPOTIFY_ENDPOINT.add_item_to_playlist(playlistId),
       headers: { Authorization: `Bearer ${token}` },
       data: {
         uris,
